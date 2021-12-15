@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "2021AdventOfCode": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
