@@ -6,9 +6,9 @@ namespace _2021AdventOfCode
     {
         static void Main(string[] args)
         {
-            day2 test = new day2();
-            var hold= test.ReturnArray(@"D:\Documents\VSRepo\2021AdventOfCode\day2.txt");
-            Console.WriteLine(test.returnLocation(hold)+ " is final location!");
+            day3 test = new day3();
+            var hold= test.ReturnArray(@"D:\Documents\VSRepo\2021AdventOfCode\day3.txt");
+            Console.WriteLine(test.returnUsage(hold)+ " is final!");
         }
     }
 }
