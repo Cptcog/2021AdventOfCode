@@ -8,7 +8,8 @@ namespace _2021AdventOfCode
         {
             day3 test = new day3();
             var hold= test.ReturnArray(@"D:\Documents\VSRepo\2021AdventOfCode\day3.txt");
-            Console.WriteLine(test.returnUsage(hold)+ " is final!");
+            Console.WriteLine(test.mostCommon(hold, 0, 1));
+            //Console.WriteLine(test.test(hold));
         }
     }
 }
