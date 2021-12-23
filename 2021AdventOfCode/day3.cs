@@ -61,16 +61,44 @@ namespace _2021AdventOfCode
 
         }
 
+        /// string build is a method to get us down to 1 string value.
+        /// <param name="input"> passing list of binaries</param>
+        /// <param name="placing">which position in the binary</param>
+        /// <param name="omit">if 1, we want most common, if 0, we want least common</param>
+        /// <returns>the most or least common binary string</returns>
+        public List<string> StringBuild(List<string> input, int placing, char omit)
+        {
+            if (input.Count == 1)
+                return input;
+            List<string> hold = new List<string>();
 
-
-
+            foreach (var a in input)
+            {
+                var Common= (char)mostCommon(input, placing, omit);
+                if (omit == '0')
+                        if (a[placing] != Common)
+                            hold.Add(a);
+                
+                if (omit == '1')
+                        if (a[placing] == Common)
+                            hold.Add(a);
+                
+            }
+            foreach (var a in hold)
+                Console.WriteLine(a.ToString());
+            return hold;
+        }
+        
         public int mostCommon(List<string> input, int placing, int tie)
         {
             int hold = 0;
             foreach (var a in input)
             {
                 if (a[placing] == '0')
+                {
                     hold--;
+
+                }
                 else
                     hold++;
             }
@@ -98,28 +126,21 @@ namespace _2021AdventOfCode
         }
         public int ReturnLifeSupport(List<string> input)
         {
+            List<string> holdOGR = new List<string>();
 
             //OGR
             for (int i = 0; i < input[0].Length - 2; i++)
-            {
-                //find most common, ties = 1
-                int hold= mostCommon(input, i, 1);
+               holdOGR= StringBuild(input, i, '1');
+            int OGR = Convert.ToInt32(holdOGR[0], 2);
 
-                for (int a = 0; a < input.Count; a++)
-                {
 
-                }
-            }
+            List<string> holdCO2SR = new List<string>();
             //CO2SR
-            for (int i = 0; i < input[0].Length - 2; i++)
-            {
-                //find least common, ties = 0
-                int hold = mostCommon(input, i, 0);
-                for (int a = 0; a < input.Count; a++)
-                {
+            for (int i = 1; i < input[0].Length - 2; i++)
+                holdCO2SR = StringBuild(input, i, '0');
+            int CO2SR = Convert.ToInt32(holdCO2SR[0], 2);
 
-                }
-            }
+            return OGR * CO2SR;
 
         }
     }
